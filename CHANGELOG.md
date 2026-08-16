@@ -36,6 +36,7 @@ enforced by `apiCheck` from this version onward.
 - `minSdk` is 21. Checks that require a higher API level are omitted rather than
   reported as false negatives.
 - No transitive dependencies.
+- 
 
 [Unreleased]: https://github.com/crazyvibes/background-audit/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/crazyvibes/background-audit/releases/tag/v0.1.0
