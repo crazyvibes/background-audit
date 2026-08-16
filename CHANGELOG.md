@@ -7,10 +7,16 @@ project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-### Added
-- Nothing yet.
+### Fixed
+- CI workflow updated off deprecated/Node-20 GitHub Actions (`checkout`, `setup-java`,
+  `setup-gradle`, `upload-artifact`).
+- Build failed outright without `android.useAndroidX=true`; added `gradle.properties`.
+- Regenerated the stale public API dump so `apiCheck` passes.
+- Pinned the Gradle daemon to JDK 17 (`gradle/gradle-daemon-jvm.properties`) — AGP 8.5.2
+  and Robolectric 4.13 both break under newer JDKs picked up from `JAVA_HOME`.
+- Added `jitpack.yml` pinning `openjdk17` for JitPack builds.
 
-## [0.1.0] — 2026-08-17
+## [0.1.0] — 2026-08-16
 
 Initial release. Public API is dumped to `background-audit/api/background-audit.api` and
 enforced by `apiCheck` from this version onward.
