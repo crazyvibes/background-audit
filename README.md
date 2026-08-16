@@ -82,6 +82,16 @@ the library's own Maven `group` — use the tag name (e.g. `v0.1.0`), not the ba
 
 No transitive dependencies. No Play Services. `minSdk 21`.
 
+## Example app
+
+[**background-audit-testapp**](https://github.com/crazyvibes/background-audit-testapp)
+is a real Android app, not a snippet — it exercises every check this library makes, with
+buttons that flip the underlying permission/system state so you can watch findings
+appear and clear live, plus a "Fix" button on every finding wired to `Remediation`. It
+depends on the same published JitPack artifact documented above, so it's also a live
+proof that the release actually resolves and works. Clone it if you want to see the
+whole API used correctly in one place before integrating.
+
 ## Why you'd use it
 
 **In an SDK.** If you ship a library that collects in the background, half your support
