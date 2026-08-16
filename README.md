@@ -42,6 +42,19 @@ Overall: BLOCKED
     until the next maintenance window.
 ```
 
+Not a mockup — actual output from `BackgroundAudit.inspect()` on real hardware:
+
+<table>
+<tr>
+<td align="center"><b>Samsung (One UI)</b></td>
+<td align="center"><b>OPPO (ColorOS)</b></td>
+</tr>
+<tr>
+<td><img src="docs/screenshots/samsung-audit.png" width="360" alt="BackgroundAudit output on a Samsung device"></td>
+<td><img src="docs/screenshots/oppo-audit.png" width="360" alt="BackgroundAudit output on an OPPO device"></td>
+</tr>
+</table>
+
 ## Install
 
 Add JitPack as a repository, then the dependency. In `settings.gradle.kts`:
