@@ -3,7 +3,7 @@
 **Tells you why Android is about to kill your background work — on this device, right now.**
 
 [![CI](https://github.com/crazyvibes/background-audit/actions/workflows/ci.yml/badge.svg)](https://github.com/crazyvibes/background-audit/actions/workflows/ci.yml)
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.crazyvibes/background-audit)](https://central.sonatype.com/artifact/io.github.crazyvibes/background-audit)
+[![JitPack](https://jitpack.io/v/crazyvibes/background-audit.svg)](https://jitpack.io/#crazyvibes/background-audit)
 [![API 21+](https://img.shields.io/badge/API-21%2B-brightgreen)](https://developer.android.com)
 
 Android has at least eight independent switches that each silently stop background work:
@@ -44,11 +44,28 @@ Overall: BLOCKED
 
 ## Install
 
+Add JitPack as a repository, then the dependency. In `settings.gradle.kts`:
+
 ```kotlin
-dependencies {
-    implementation("io.github.crazyvibes:background-audit:0.1.0")
+dependencyResolutionManagement {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url = uri("https://jitpack.io") }
+    }
 }
 ```
+
+In your module's `build.gradle.kts`:
+
+```kotlin
+dependencies {
+    implementation("com.github.crazyvibes:background-audit:v0.1.0")
+}
+```
+
+JitPack always uses `com.github.<owner>:<repo>:<tag>` as the coordinate, regardless of
+the library's own Maven `group` — use the tag name (e.g. `v0.1.0`), not the bare version.
 
 No transitive dependencies. No Play Services. `minSdk 21`.
 
