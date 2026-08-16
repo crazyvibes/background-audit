@@ -37,6 +37,7 @@ public final class io/github/crazyvibes/backgroundaudit/DeviceProfile$Vendor : j
 	public static final field VIVO Lio/github/crazyvibes/backgroundaudit/DeviceProfile$Vendor;
 	public static final field XIAOMI Lio/github/crazyvibes/backgroundaudit/DeviceProfile$Vendor;
 	public final fun getAddsRestrictions ()Z
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
 	public static fun valueOf (Ljava/lang/String;)Lio/github/crazyvibes/backgroundaudit/DeviceProfile$Vendor;
 	public static fun values ()[Lio/github/crazyvibes/backgroundaudit/DeviceProfile$Vendor;
 }
@@ -64,6 +65,7 @@ public final class io/github/crazyvibes/backgroundaudit/Finding$Id : java/lang/E
 	public static final field POWER_SAVE_MODE_ACTIVE Lio/github/crazyvibes/backgroundaudit/Finding$Id;
 	public static final field STANDBY_BUCKET Lio/github/crazyvibes/backgroundaudit/Finding$Id;
 	public static final field VENDOR_RESTRICTIONS_LIKELY Lio/github/crazyvibes/backgroundaudit/Finding$Id;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
 	public static fun valueOf (Ljava/lang/String;)Lio/github/crazyvibes/backgroundaudit/Finding$Id;
 	public static fun values ()[Lio/github/crazyvibes/backgroundaudit/Finding$Id;
 }
@@ -79,6 +81,8 @@ public final class io/github/crazyvibes/backgroundaudit/Severity : java/lang/Enu
 	public static final field DEGRADED Lio/github/crazyvibes/backgroundaudit/Severity;
 	public static final field INFO Lio/github/crazyvibes/backgroundaudit/Severity;
 	public static final field RESTRICTED Lio/github/crazyvibes/backgroundaudit/Severity;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
 	public static fun valueOf (Ljava/lang/String;)Lio/github/crazyvibes/backgroundaudit/Severity;
 	public static fun values ()[Lio/github/crazyvibes/backgroundaudit/Severity;
 }
+

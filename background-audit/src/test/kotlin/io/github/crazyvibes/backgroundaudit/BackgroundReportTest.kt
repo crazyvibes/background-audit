@@ -9,6 +9,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
+import org.robolectric.shadows.ShadowBuild
 
 @RunWith(RobolectricTestRunner::class)
 class BackgroundReportTest {
@@ -52,8 +53,10 @@ class BackgroundReportTest {
     }
 
     @Test
-    @Config(manufacturer = "Xiaomi", sdk = [33])
+    @Config(sdk = [33])
     fun `xiaomi devices report vendor restrictions`() {
+        ShadowBuild.setManufacturer("Xiaomi")
+
         val report = BackgroundAudit.inspect(ApplicationProvider.getApplicationContext())
 
         assertEquals(DeviceProfile.Vendor.XIAOMI, report.device.vendor)
@@ -61,8 +64,10 @@ class BackgroundReportTest {
     }
 
     @Test
-    @Config(manufacturer = "Google", sdk = [33])
+    @Config(sdk = [33])
     fun `stock android reports no vendor restrictions`() {
+        ShadowBuild.setManufacturer("Google")
+
         val report = BackgroundAudit.inspect(ApplicationProvider.getApplicationContext())
 
         assertEquals(DeviceProfile.Vendor.AOSP_OR_UNKNOWN, report.device.vendor)
