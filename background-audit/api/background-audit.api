@@ -1,0 +1,84 @@
+public final class io/github/crazyvibes/backgroundaudit/BackgroundAudit {
+	public static final field INSTANCE Lio/github/crazyvibes/backgroundaudit/BackgroundAudit;
+	public static final field VERSION Ljava/lang/String;
+	public static final fun inspect (Landroid/content/Context;)Lio/github/crazyvibes/backgroundaudit/BackgroundReport;
+}
+
+public final class io/github/crazyvibes/backgroundaudit/BackgroundReport {
+	public final fun atLeast (Lio/github/crazyvibes/backgroundaudit/Severity;)Ljava/util/List;
+	public final fun get (Lio/github/crazyvibes/backgroundaudit/Finding$Id;)Lio/github/crazyvibes/backgroundaudit/Finding;
+	public final fun getDevice ()Lio/github/crazyvibes/backgroundaudit/DeviceProfile;
+	public final fun getFindings ()Ljava/util/List;
+	public final fun getSeverity ()Lio/github/crazyvibes/backgroundaudit/Severity;
+	public final fun isHealthy ()Z
+	public final fun toReportString ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/crazyvibes/backgroundaudit/DeviceProfile {
+	public final fun getManufacturer ()Ljava/lang/String;
+	public final fun getModel ()Ljava/lang/String;
+	public final fun getSdkInt ()I
+	public final fun getVendor ()Lio/github/crazyvibes/backgroundaudit/DeviceProfile$Vendor;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/crazyvibes/backgroundaudit/DeviceProfile$Vendor : java/lang/Enum {
+	public static final field AOSP_OR_UNKNOWN Lio/github/crazyvibes/backgroundaudit/DeviceProfile$Vendor;
+	public static final field ASUS Lio/github/crazyvibes/backgroundaudit/DeviceProfile$Vendor;
+	public static final field HONOR Lio/github/crazyvibes/backgroundaudit/DeviceProfile$Vendor;
+	public static final field HUAWEI Lio/github/crazyvibes/backgroundaudit/DeviceProfile$Vendor;
+	public static final field MEIZU Lio/github/crazyvibes/backgroundaudit/DeviceProfile$Vendor;
+	public static final field ONEPLUS Lio/github/crazyvibes/backgroundaudit/DeviceProfile$Vendor;
+	public static final field OPPO Lio/github/crazyvibes/backgroundaudit/DeviceProfile$Vendor;
+	public static final field REALME Lio/github/crazyvibes/backgroundaudit/DeviceProfile$Vendor;
+	public static final field SAMSUNG Lio/github/crazyvibes/backgroundaudit/DeviceProfile$Vendor;
+	public static final field TECNO Lio/github/crazyvibes/backgroundaudit/DeviceProfile$Vendor;
+	public static final field VIVO Lio/github/crazyvibes/backgroundaudit/DeviceProfile$Vendor;
+	public static final field XIAOMI Lio/github/crazyvibes/backgroundaudit/DeviceProfile$Vendor;
+	public final fun getAddsRestrictions ()Z
+	public static fun valueOf (Ljava/lang/String;)Lio/github/crazyvibes/backgroundaudit/DeviceProfile$Vendor;
+	public static fun values ()[Lio/github/crazyvibes/backgroundaudit/DeviceProfile$Vendor;
+}
+
+public final class io/github/crazyvibes/backgroundaudit/Finding {
+	public final fun getDetail ()Ljava/lang/String;
+	public final fun getId ()Lio/github/crazyvibes/backgroundaudit/Finding$Id;
+	public final fun getRemediation ()Lio/github/crazyvibes/backgroundaudit/Remediation;
+	public final fun getSeverity ()Lio/github/crazyvibes/backgroundaudit/Severity;
+	public final fun getTitle ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/crazyvibes/backgroundaudit/Finding$Id : java/lang/Enum {
+	public static final field BACKGROUND_LOCATION_MISSING Lio/github/crazyvibes/backgroundaudit/Finding$Id;
+	public static final field BACKGROUND_RESTRICTED Lio/github/crazyvibes/backgroundaudit/Finding$Id;
+	public static final field BATTERY_OPTIMISED Lio/github/crazyvibes/backgroundaudit/Finding$Id;
+	public static final field DATA_SAVER_ACTIVE Lio/github/crazyvibes/backgroundaudit/Finding$Id;
+	public static final field DOZE_ACTIVE Lio/github/crazyvibes/backgroundaudit/Finding$Id;
+	public static final field EXACT_ALARMS_DENIED Lio/github/crazyvibes/backgroundaudit/Finding$Id;
+	public static final field LOCATION_PERMISSION_COARSE_ONLY Lio/github/crazyvibes/backgroundaudit/Finding$Id;
+	public static final field LOCATION_PERMISSION_MISSING Lio/github/crazyvibes/backgroundaudit/Finding$Id;
+	public static final field LOCATION_SERVICES_OFF Lio/github/crazyvibes/backgroundaudit/Finding$Id;
+	public static final field NOTIFICATION_PERMISSION_MISSING Lio/github/crazyvibes/backgroundaudit/Finding$Id;
+	public static final field POWER_SAVE_MODE_ACTIVE Lio/github/crazyvibes/backgroundaudit/Finding$Id;
+	public static final field STANDBY_BUCKET Lio/github/crazyvibes/backgroundaudit/Finding$Id;
+	public static final field VENDOR_RESTRICTIONS_LIKELY Lio/github/crazyvibes/backgroundaudit/Finding$Id;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/crazyvibes/backgroundaudit/Finding$Id;
+	public static fun values ()[Lio/github/crazyvibes/backgroundaudit/Finding$Id;
+}
+
+public final class io/github/crazyvibes/backgroundaudit/Remediation {
+	public final fun getUserAction ()Ljava/lang/String;
+	public final fun settingsIntent (Landroid/content/Context;)Landroid/content/Intent;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/crazyvibes/backgroundaudit/Severity : java/lang/Enum {
+	public static final field BLOCKED Lio/github/crazyvibes/backgroundaudit/Severity;
+	public static final field DEGRADED Lio/github/crazyvibes/backgroundaudit/Severity;
+	public static final field INFO Lio/github/crazyvibes/backgroundaudit/Severity;
+	public static final field RESTRICTED Lio/github/crazyvibes/backgroundaudit/Severity;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/crazyvibes/backgroundaudit/Severity;
+	public static fun values ()[Lio/github/crazyvibes/backgroundaudit/Severity;
+}

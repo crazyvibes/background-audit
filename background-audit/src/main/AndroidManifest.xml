@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+      BackgroundAudit reads state; it never requests permissions on the host app's
+      behalf. The only permission it declares is the one required to read the app's
+      own standby bucket, and it degrades gracefully if the host app omits it.
+    -->
+    <uses-permission
+        android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions"
+        xmlns:tools="http://schemas.android.com/tools" />
+
+</manifest>
