@@ -82,6 +82,39 @@ screen — including the vendor screens Android doesn't know about.
 **In a crash or analytics pipeline.** Tag events with `report.severity` and the
 "background collection is unreliable" cohort separates itself from your actual bugs.
 
+## Reporting from user devices
+
+`report.severity` and `report.toReportString()` are meant to leave the device. Two
+different patterns, depending on what question you're answering:
+
+**Enrich a crash report (reactive).** Firebase Crashlytics only surfaces custom keys and
+log lines on the *next* crash or non-fatal from that session — it isn't a standing
+telemetry pipe. Good for "was this crash caused by a background restriction," useless for
+population-wide numbers:
+
+```kotlin
+val report = BackgroundAudit.inspect(context)
+FirebaseCrashlytics.getInstance().apply {
+    setCustomKey("bg_audit_severity", report.severity.name)
+    log(report.toReportString())
+}
+```
+
+**Track it across your install base (proactive).** Crashlytics can't answer "what
+fraction of my users are BLOCKED, broken down by vendor" — for that you want Firebase
+Analytics instead, logged as a regular event so it's queryable via the BigQuery export
+regardless of whether anyone ever crashes:
+
+```kotlin
+firebaseAnalytics.logEvent("bg_audit") {
+    param("severity", report.severity.name)
+    param("vendor", report.device.vendor.name)
+}
+```
+
+Use the first to explain individual crashes, the second to answer "why is retention worse
+on Xiaomi."
+
 ## Acting on a finding
 
 Every finding that a user can fix carries a `Remediation` with a resolved intent:
