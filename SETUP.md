@@ -46,8 +46,49 @@ Fifteen minutes of work, in order.
    managers."* Topics: `android`, `kotlin`, `background-execution`, `doze`,
    `battery-optimization`, `android-sdk`, `location`. Enable Issues. Enable Discussions.
 
-8. **Publishing to Maven Central is optional** and takes a few days of Sonatype
-   paperwork. The repo does its job without it — do it later if the project gets traction.
+8. **Publish to Maven Central.** The build is already wired for it
+   (`com.vanniktech.maven.publish`, configured in `background-audit/build.gradle.kts`
+   under `mavenPublishing { ... }`) and a release workflow exists at
+   `.github/workflows/release.yml`, triggered on any `v*` tag push. What's left is account
+   setup, which only you can do:
+
+   1. Create an account at [central.sonatype.com](https://central.sonatype.com) — sign in
+      with **your `crazyvibes` GitHub account** via OAuth. This automatically verifies the
+      `io.github.crazyvibes` namespace (the `group` this project already uses), no DNS
+      records needed.
+   2. In the portal, go to **Account → Generate User Token**. This gives you a
+      `mavenCentralUsername` / `mavenCentralPassword` pair — not your login password, a
+      generated token.
+   3. Generate a GPG key pair if you don't have one, and publish the public key to a
+      keyserver Central checks (e.g. `keys.openpgp.org` or `keyserver.ubuntu.com`):
+      ```bash
+      gpg --gen-key
+      gpg --list-secret-keys --keyid-format long   # note the key ID
+      gpg --armor --export-secret-keys <KEY_ID> > private-key.asc
+      gpg --keyserver keyserver.ubuntu.com --send-keys <KEY_ID>
+      ```
+      Keep `private-key.asc` out of the repo. Delete it once it's stored in secrets below.
+   4. For **local publishing** (`./gradlew publishAndReleaseToMavenCentral`), put these in
+      `~/.gradle/gradle.properties` (never in the repo):
+      ```properties
+      mavenCentralUsername=<token username>
+      mavenCentralPassword=<token password>
+      signingInMemoryKey=<contents of private-key.asc>
+      signingInMemoryKeyId=<last 8 chars of the key ID>
+      signingInMemoryKeyPassword=<your GPG key passphrase>
+      ```
+   5. For **CI publishing** (the tag-triggered workflow), add the same five values as
+      repository secrets under Settings → Secrets and variables → Actions:
+      `MAVEN_CENTRAL_USERNAME`, `MAVEN_CENTRAL_PASSWORD`, `SIGNING_IN_MEMORY_KEY`,
+      `SIGNING_IN_MEMORY_KEY_ID`, `SIGNING_IN_MEMORY_KEY_PASSWORD`.
+   6. Push a `v*` tag (or run `./gradlew publishAndReleaseToMavenCentral` locally) to
+      publish. `automaticRelease = true` is set, so a successful publish goes straight to
+      Central without a manual "release" click in the portal — the first release on a new
+      namespace can still take a few minutes to a few hours to become searchable.
+
+   JitPack keeps working as-is regardless — the two are independent and use different
+   coordinates (`com.github.crazyvibes:background-audit:v0.1.1` on JitPack vs.
+   `io.github.crazyvibes:background-audit:0.1.1` on Maven Central).
 
 ## What to do with it once it's up
 

@@ -2,6 +2,7 @@
 agp = "8.5.2"
 kotlin = "2.0.20"
 bcv = "0.16.3"
+mavenPublish = "0.35.0"
 androidxAnnotation = "1.8.2"
 junit = "4.13.2"
 robolectric = "4.13"
@@ -17,3 +18,4 @@ androidx-test-core = { module = "androidx.test:core", version.ref = "androidxTes
 android-library = { id = "com.android.library", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 binary-compatibility-validator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "bcv" }
+maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }

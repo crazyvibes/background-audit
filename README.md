@@ -57,7 +57,17 @@ Not a mockup — actual output from `BackgroundAudit.inspect()` on real hardware
 
 ## Install
 
-Add JitPack as a repository, then the dependency. In `settings.gradle.kts`:
+**Maven Central** (recommended — `mavenCentral()` is already in most projects' default
+repositories):
+
+```kotlin
+dependencies {
+    implementation("io.github.crazyvibes:background-audit:0.1.1")
+}
+```
+
+**JitPack**, if you'd rather build straight from a GitHub tag. Add it as a repository in
+`settings.gradle.kts`:
 
 ```kotlin
 dependencyResolutionManagement {
@@ -69,11 +79,11 @@ dependencyResolutionManagement {
 }
 ```
 
-In your module's `build.gradle.kts`:
+Then in your module's `build.gradle.kts`:
 
 ```kotlin
 dependencies {
-    implementation("com.github.crazyvibes:background-audit:v0.1.0")
+    implementation("com.github.crazyvibes:background-audit:v0.1.1")
 }
 ```
 
