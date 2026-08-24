@@ -3,6 +3,7 @@
 **Tells you why Android is about to kill your background work — on this device, right now.**
 
 [![CI](https://github.com/crazyvibes/background-audit/actions/workflows/ci.yml/badge.svg)](https://github.com/crazyvibes/background-audit/actions/workflows/ci.yml)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.crazyvibes/background-audit.svg)](https://central.sonatype.com/artifact/io.github.crazyvibes/background-audit)
 [![JitPack](https://jitpack.io/v/crazyvibes/background-audit.svg)](https://jitpack.io/#crazyvibes/background-audit)
 [![API 21+](https://img.shields.io/badge/API-21%2B-brightgreen)](https://developer.android.com)
 
